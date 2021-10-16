@@ -4,6 +4,45 @@
     background-color: #E7E6F9;
     position: relative;
 }
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #5c56d4;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #E7E6F9;
+}
+
+.home_container .side_bar {
+    width: 200px;
+    padding: 5px 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: #E7E6F9;
+    color: darkslateblue;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    z-index: 11;
+    border-radius: 10px;
+    box-shadow: -2px -2px 8px rgba(19, 19, 25, 0.05), 2px 2px 8px rgba(19, 19, 25, 0.05);
+    cursor:pointer
+}
+
+.side_bar .menu_item{
+    padding:20px;
+
+}
+
+.side_bar .menu_item:hover{
+    background-color:#5c56d4;
+    color:white;
+}
 
 .nav_bar {
     width: 100%;
@@ -14,7 +53,10 @@
     justify-content: space-between;
     align-items: center;
     background-color: #5c56d4;
-    position:relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
     .home_container .profile {
@@ -30,20 +72,30 @@
             border-radius: 50%;
         }
 
-.home_container .layout{
-    display:flex;
-    flex-direction:row;
-    padding:5px 20px;
-    justify-content:flex-end;
-    align-items:center;
-
+.home_container .layout {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 20px;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
 }
 .home_container .layout .post_view {
     width: 25px;
     height: 25px;
     display: flex;
     flex-wrap: wrap;
-    margin-right:5px;
+    margin-right:10px;
+}
+
+.layout .list_icon{
+    display:flex;
+    align-items:center;
 }
 
 .home_container .post_view span {
@@ -70,36 +122,225 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-top:110px;
+    max-height:100vh;
+    overflow-y:scroll;
+    height:100%;
 }
-.home_container .contentArea .grid{
-    display:flex;
-   flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:flex-start;
-    width:100%;
-}
+    .home_container .contentArea .grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width:100%;
+    }
 
 .home_container .grid_item {
     width: 200px;
     height: 200px;
     box-shadow: -2px -2px 8px rgba(19, 19, 25, 0.05), 2px 2px 8px rgba(19, 19, 25, 0.05);
     padding: 10px;
-    margin:20px 20px 0px 0px;
-    position:relative;
-    background-color:white;
-    border-radius:5px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    }
+    margin: 10px 10px 10px 10px;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home_container svg.edit_icon{
+    position:absolute;
+    top:10px;
+    right:10px;
+      width:20px;
+      height:20px;
+}
+
+.home_container svg.delete_icon {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+}
 
 .contentArea .contact_detail {
     display: flex;
     flex-direction: column;
-
 }
 .contentArea .contact_detail span{
-    margin:5px 0px;
+    margin:2px 0px;
 }
+
+
+
+.home_container .contentArea .list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.home_container .list_item {
+    width: 500px;
+    height: 80px;
+    box-shadow: -2px -2px 8px rgba(19, 19, 25, 0.05), 2px 2px 8px rgba(19, 19, 25, 0.05);
+    padding: 10px;
+    margin: 10px 10px 10px 10px;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center
+}
+
+.contentArea .contact_detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.contentArea .name{
+    color:#565dc4;
+    font-weight:bold;
+    font-size:15px;
+}
+.contentArea .email, .contentArea .mobile {
+    color: gray;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.list .contact_detail{
+    padding-left:20px;
+}
+.add {
+    width: 30px;
+    height: 30px;
+  display: flex;
+    justify-content: center;
+    margin-left:10px;
+}
+    .add svg {
+        width: 30px;
+        height: 30px;
+        background-color:transparent 
+    }
+
+
+    .contentArea .contact_detail span {
+        margin: 2px 0px;
+    }
+
+.home_container .popup{
+    width:100%;
+    height:100vh;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   position:absolute;
+   top:0;
+   z-index:11;
+
+}
+    .home_container .popup .grayArea {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 0;
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+        background-color: rgba(0,0,0,.7) !important;
+        height:100vh;
+        width:100%
+    }
+
+    .home_container .popup .contentArea {
+  
+    animation: fade 0.3s linear;
+    width: 98%;
+    max-width: 400px;
+    position: relative;
+    z-index: 12;
+    border-radius: 24px;
+    background-color: white;
+    padding:10px;
+    overflow-y:hidden;
+    height:300px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.popup .addContact{
+    width:100%;
+}
+
+.home_container .popup .contactTitle {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center
+}
+
+    .home_container .popup form{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        width:100%
+    }
+
+.popupForm{
+    min-width:100%;
+}
+
+.home_container .popup form input {
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px 0px;
+    min-width: 90%;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+}
+
+.popupForm button{
+    width:150px;
+    height:30px;
+    padding:5px;
+    text-align:center;
+    background-color:#5c56d4;
+    color:white;
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    margin-top:20px;
+}
+
+
+
+
+
+
+        @media(max-width:600px) {
+            .home_container .list_item {
+                width: 100%;
+            }
+
+            .home_container .list_item {
+                width: 100%;
+                margin: 10px 0px 10px 0px;
+            }
+
+            .list .contact_detail {
+                padding-left: 5px;
+            }
+        }
 
 
