@@ -19,9 +19,9 @@ const SignInPage = (props) => {
 				<form action="#">
 						<h1>Sign In</h1>
 						
-					<input type="tel" placeholder="Mobile No." />
-					<input type="password" placeholder="Password" />
-					<button>Sign In</button>
+						<input type="tel" placeholder="Mobile No." defaultValue={props.signInDetail.mobile}/>
+						<input type="password" placeholder="Password" defaultValue={props.signInDetail.password} />
+						<button onClick={(event) => {props.signIn(event,)}}>Sign In</button>
 				</form>
 			</div>
 			<div className="overlay-container">
