@@ -1,0 +1,105 @@
+.home_container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #E7E6F9;
+    position: relative;
+}
+
+.nav_bar {
+    width: 100%;
+    height: 60px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5c56d4;
+    position:relative;
+}
+
+    .home_container .profile {
+        border-radius: 50%;
+        box-shadow: -2px -2px 8px rgba(19, 19, 25, 0.05), 2px 2px 8px rgba(19, 19, 25, 0.05);
+        width:42px;
+        height:42px;
+    }
+
+        .home_container .profile img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
+
+.home_container .layout{
+    display:flex;
+    flex-direction:row;
+    padding:5px 20px;
+    justify-content:flex-end;
+    align-items:center;
+
+}
+.home_container .layout .post_view {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right:5px;
+}
+
+.home_container .post_view span {
+    width: 9px;
+    height: 9px;
+    margin: 1.25px;
+    border-radius: 2px;
+    border: 3px solid #777;
+}
+
+    .home_container .active {
+        border: 3px solid #565dc4 !important;
+    }
+
+.home_container .filter{
+    position:relative;
+    padding:2px 5px;
+    border:1px solid black;
+    margin:0px 20px;
+}
+
+.home_container .contentArea {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.home_container .contentArea .grid{
+    display:flex;
+   flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    width:100%;
+}
+
+.home_container .grid_item {
+    width: 200px;
+    height: 200px;
+    box-shadow: -2px -2px 8px rgba(19, 19, 25, 0.05), 2px 2px 8px rgba(19, 19, 25, 0.05);
+    padding: 10px;
+    margin:20px 20px 0px 0px;
+    position:relative;
+    background-color:white;
+    border-radius:5px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    }
+
+.contentArea .contact_detail {
+    display: flex;
+    flex-direction: column;
+
+}
+.contentArea .contact_detail span{
+    margin:5px 0px;
+}
+
+

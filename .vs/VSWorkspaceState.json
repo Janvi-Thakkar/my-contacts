@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Assets",
+    "\\src\\Assets\\css",
+    "\\src\\Assets\\images",
+    "\\src\\components",
+    "\\src\\controllers",
+    "\\src\\Routes",
+    "\\src\\server"
+  ],
+  "SelectedNode": "\\src\\Assets\\images\\profileImg.svg",
+  "PreviewInSolutionExplorer": false
+}
