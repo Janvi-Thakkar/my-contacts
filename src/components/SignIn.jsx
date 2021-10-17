@@ -9,19 +9,20 @@ const SignInPage = (props) => {
 			<div className="form-container sign-up-container">
 				<form >
 					<h1>Create Account</h1>
-					<input type="text" placeholder="Name" />
-					<input type="tel" placeholder="Mobile No." />
-					<input type="password" placeholder="Password" />
-					<button>Sign Up</button>
+						<input type="text" placeholder="Name" onChange={(event) => { props.setRegisterDetails(event.target.value, "name") }}/>
+						<input type="number" length="10" placeholder="Mobile No." onChange={(event) => { props.setRegisterDetails(event.target.value, "mobile") }}/>
+						<input type="email" placeholder="Email" onChange={(event) => { props.setRegisterDetails(event.target.value, "email") }} />
+						<input type="password" placeholder="Password" onChange={(event) => { props.setRegisterDetails(event.target.value, "pass") }} />
+						<button onClick={(event) => { props.signUp(event) }}>Sign Up</button>
 				</form>
 			</div>
 			<div className="form-container sign-in-container">
 				<form action="#">
 						<h1>Sign In</h1>
 						
-						<input type="tel" placeholder="Mobile No." defaultValue={props.signInDetail.mobile}/>
-						<input type="password" placeholder="Password" defaultValue={props.signInDetail.password} />
-						<button onClick={(event) => {props.signIn(event,)}}>Sign In</button>
+						<input type="tel" placeholder="Mobile No." defaultValue={props.signInDetail.mobile} onChange={(event) => {props.setSignInDetails(event.target.value,"mobile")}}/>
+						<input type="password" placeholder="Password" defaultValue={props.signInDetail.password} onChange={(event) => { props.setSignInDetails(event.target.value, "pass") }}/>
+						<button onClick={(event) => { props.signIn(event, props.signInDetail.mobile, props.signInDetail.password)}}>Sign In</button>
 				</form>
 			</div>
 			<div className="overlay-container">
