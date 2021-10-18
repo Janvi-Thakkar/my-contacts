@@ -7,7 +7,7 @@ import axios from "axios";
 
 const HomeController = () => {
     const userId = localStorage.getItem('user');
-    const apiUrl = "http://localhost:1300/api/";
+    const apiUrl = "https://my-contact-api-backend.herokuapp.com/api/";
     const history = useHistory();
     const [user, editUser] = useState({ name:"", email:"", avtar: "", mobile: "" })
     const [contacts, EditContacts] = useState([{ name: "", email: "", avtar: "", mobile: "" }])

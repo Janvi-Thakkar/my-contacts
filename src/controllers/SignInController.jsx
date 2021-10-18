@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 
 
 const SignInController = () => {
-    const apiUrl = "http://localhost:1300/api/";
+    const apiUrl = "https://my-contact-api-backend.herokuapp.com/api/";
     const history = useHistory();
     const toggleOverlay = (type) => {
         if (type == 'add') {
