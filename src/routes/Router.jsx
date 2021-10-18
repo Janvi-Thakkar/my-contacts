@@ -19,7 +19,9 @@ const Routes = () =>{
         <>
         <BrowserRouter>
             <Switch>
-                
+
+                    <Route exact path="/signin" component={SignInController} />
+
                   {
                     (!localStorage.getItem('signIn') || !localStorage.getItem('signIn') == true) &&
                     <Route path="*">
@@ -32,9 +34,8 @@ const Routes = () =>{
                             <Redirect to="/" />
                         </Route>
                     }
+                    
                     <Route exact path="/" component={HomeController} />
-                    <Route exact path="/signin" component={SignInController} />
-
 
             </Switch>
           

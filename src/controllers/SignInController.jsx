@@ -112,7 +112,6 @@ const SignInController = () => {
             toast.success("SignIn Successfully");
             localStorage.setItem('signIn', true);
             localStorage.setItem('user', userDetail.mobile)
-            localStorage.setItem('password', userDetail.password)
             history.push('/');
 
         }
