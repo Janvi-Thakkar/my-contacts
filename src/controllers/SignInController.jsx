@@ -46,37 +46,44 @@ const SignInController = () => {
     }
     const signIn = async (event, mobile, password) => {
         event.preventDefault();
-        localStorage.setItem('signIn', true);
-        let res = await fetch(apiUrl + "signin", {
-            method:'post',
-            headers: {
-                'Content-Type':'application/json'
-                    },
-            body: JSON.stringify({
-                mobile:mobile,
-                password:password
-            })
-        }
-        );
+        let res;
+        if (mobile.length == 10 && password != null && password != "") {
+            res = await fetch(apiUrl + "signin", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    mobile: mobile,
+                    password: password
+                })
+            }
+            );
+            if (res.status == 401) {
+                toast.error("Mobile number or password is incorrect");
+            }
+            else if (res.status == 402) {
+                toast.error("Password can not be null");
+            }
+            else if (res.status == 403) {
+                toast.error("Mobile Number should be of 10 digits");
+            }
 
-        if (res.status == 401) {
-            toast.error("Mobile number or password is incorrect");
-        }
-        else if (res.status == 402) {
-            toast.error("Password can not be null");
-        }
-        else if (res.status == 403) {
-            toast.error("Mobile Number should be of 10 digits");
-        }
+            else if (res.status == 200) {
+                toast.success("SignIn Successfully");
+                localStorage.setItem('signIn', true);
+                localStorage.setItem('user', mobile)
+                localStorage.setItem('password', password)
+                history.push('/');
 
-        else if (res.status == 200) {
-            toast.success("SignIn Successfully");
-            localStorage.setItem('signIn', true);
-            localStorage.setItem('user', mobile)
-            localStorage.setItem('password', password)
-            history.push('/');
+            }
 
-        }
+    }
+    else {
+    toast.error("Mobile number or password is in incorrect format");
+
+}
+
        
     }
 

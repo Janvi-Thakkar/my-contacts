@@ -221,3 +221,38 @@
         height: 40px;
         width: 40px;
     }
+
+    @media(max-width:600px) {
+        .signin_container .overlay-panel {
+           padding: 0 20px;
+           
+        }
+    }
+
+@media(max-width:500px) {
+    .signin_container .overlay-panel {
+        padding: 0 10px;
+    }
+
+    .signin_container .sign-in-container {
+        left: 0;
+        width: 100%;
+        z-index: 2;
+    }
+    .signin_container .sign-up-container {
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        color:black !important;
+    }
+
+     .signin_container .overlay-left{
+         width:100%;
+     }
+
+    .signin_container .overlay-right {
+        right: 0;
+        transform: translateX(100%);
+    }
+
+}
