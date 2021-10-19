@@ -26,7 +26,7 @@ const SignInPage = (props) => {
 						<input type="password" placeholder="Password" onChange={(event) => { props.setRegisterDetails(event.target.value, "pass") }} />
 						<button onClick={(event) => { props.signUp(event) }}>Sign Up</button>
 						{windowSize.width < 600 &&
-							<span>Already have an Account? <button  onClick={() => { show(true) }}>Sign In</button></span>
+							<span className="account-span">Already have an Account? <button className="clickLink" onClick={() => { show(true) }}>Sign In</button></span>
 
 						}</form>
 				</div>	  </>}
@@ -38,7 +38,7 @@ const SignInPage = (props) => {
 						<input type="password" placeholder="Password" defaultValue={props.signInDetail.password} onChange={(event) => { props.setSignInDetails(event.target.value, "pass") }}/>
 						<button onClick={(event) => { props.signIn(event, props.signInDetail.mobile, props.signInDetail.password)}}>Sign In</button>
 						{windowSize.width < 600 &&
-							<span>Already have an Account? <button className="ghost" id="signIn" onClick={() => { show(!showSignIn) }}>Sign In</button></span>
+							<span className="account-span">Don't have an Account? <button className="clickLink" onClick={() => { show(!showSignIn) }}>Sign UP</button></span>
 
 						}
 					</form>

@@ -222,14 +222,13 @@
         width: 40px;
     }
 
-    @media(max-width:600px) {
-        .signin_container .overlay-panel {
-           padding: 0 20px;
-           
-        }
+  
+
+@media(max-width:600px) {
+    .signin_container  {
+        width:90%
     }
 
-@media(max-width:500px) {
     .signin_container .overlay-panel {
         padding: 0 10px;
     }
@@ -244,6 +243,7 @@
         width: 100%;
         z-index: 2;
         color:black !important;
+        opacity:1;
     }
 
      .signin_container .overlay-left{
@@ -253,6 +253,27 @@
     .signin_container .overlay-right {
         right: 0;
         transform: translateX(100%);
+    }
+
+    .signin_container .clickLink{
+        color:#5c56d4;
+        font-size:14px;
+        background-color:transparent;
+        border:none;
+        padding:2px;
+    }
+
+    .signin_container span.account-span {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+ 
+}
+
+@media(max-width:400px) {
+    .signin_container form {
+        padding: 0px 10px;
     }
 
 }
