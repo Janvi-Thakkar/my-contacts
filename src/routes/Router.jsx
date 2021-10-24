@@ -18,15 +18,16 @@ const Routes = () =>{
     return (
         <>
         <BrowserRouter>
-            <Switch>
-
+                <Switch>
+                    <Route exact path="/" component={HomeController} />
                     <Route exact path="/signin" component={SignInController} />
 
-                  {
-                    (!localStorage.getItem('signIn') || !localStorage.getItem('signIn') == true) &&
-                    <Route path="*">
-                        <Redirect to="/signin" />
-                    </Route>
+
+                    {
+                        (!localStorage.getItem('signIn') || localStorage.getItem('signIn') != true) &&
+                        <Route path="*">
+                            <Redirect to="/signin" />
+                        </Route>
                     }
                     {
                         (localStorage.getItem('signIn') && localStorage.getItem('signIn') == true) &&
@@ -34,8 +35,10 @@ const Routes = () =>{
                             <Redirect to="/" />
                         </Route>
                     }
+                   
+                 
                     
-                    <Route exact path="/" component={HomeController} />
+                    
 
             </Switch>
           

@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import HomePage from "../components/Home";
-
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import axios from "axios";
@@ -96,7 +95,7 @@ const HomeController = () => {
                 url: apiUrl + "addContact",
                 method: 'patch',
                 headers: {
-                    'Content-Type': 'application/json',
+                   'Content-Type': 'application/json',
                     'Authorization': userId
                 },
                 data: data
@@ -232,20 +231,33 @@ const HomeController = () => {
 
     }
     const getUser = async () => {
-        let res = await axios({
-            url: apiUrl + "user",
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('user')
+
+        if (localStorage.getItem('user')) {
+            let res = await axios({
+                url: apiUrl + "user",
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('user')
+                }
+            }
+            );
+            if (res.status == 401) {
+                toast.error("user not found. try again");
+                localStorage.removeItem("user");
+                localStorage.removeItem("signin");
+                history.push("/signin")
+            }
+           else if (res.data.result.length > 0) {
+                editUser({ name: res.data.result[0].name, email: res.data.result[0].email, mobile: res.data.result[0].mobile, avtar: "" })
+                EditContacts(res.data.result[0].contacts);
+                EditSelf({ ...user })
             }
         }
-        );
-
-        editUser({ name: res.data.result[0].name, email: res.data.result[0].email, mobile: res.data.result[0].mobile, avtar: "" })
-        EditContacts(res.data.result[0].contacts);
-        EditSelf({ ...user })
-
+        else {
+            history.push("/signin")
+        }
+       
     }
     return (
 

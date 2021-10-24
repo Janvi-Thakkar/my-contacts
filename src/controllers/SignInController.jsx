@@ -2,12 +2,15 @@ import { React, useState } from "react";
 import SignInPage from "../components/SignIn";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
+import axios from "axios";
+import HomeController from "./HomeController";
 
 
 
 
 const SignInController = () => {
-    const apiUrl = "https://my-contact-api-backend.herokuapp.com/api/";
+    // const apiUrl = "https://my-contact-api-backend.herokuapp.com/api/";
+    const apiUrl = "http://localhost:3100/api/";
     const history = useHistory();
     const toggleOverlay = (type) => {
         if (type == 'add') {
@@ -25,7 +28,7 @@ const SignInController = () => {
         if (type == 'mobile') {
             changeDetail({ mobile: val, password: signInDetail.password })
         }
-        else{
+        else {
             changeDetail({ mobile: signInDetail.mobile, password: val })
         }
     }
@@ -35,30 +38,33 @@ const SignInController = () => {
             RegisterDetail({ mobile: val, password: userDetail.password, email: userDetail.email, name: userDetail.name })
         }
         else if (type == 'pass') {
-            RegisterDetail({ mobile: userDetail.mobile, password: val , email: userDetail.email, name: userDetail.name })
+            RegisterDetail({ mobile: userDetail.mobile, password: val, email: userDetail.email, name: userDetail.name })
         }
         else if (type == 'email') {
             RegisterDetail({ mobile: userDetail.mobile, password: userDetail.password, email: val, name: userDetail.name })
         }
         else {
-            RegisterDetail({ mobile: userDetail.mobile, password: userDetail.password, email: userDetail.email, name:val })
+            RegisterDetail({ mobile: userDetail.mobile, password: userDetail.password, email: userDetail.email, name: val })
         }
     }
     const signIn = async (event, mobile, password) => {
         event.preventDefault();
         let res;
         if (mobile.length == 10 && password != null && password != "") {
-            res = await fetch(apiUrl + "signin", {
+
+            let res = await axios({
+                url: apiUrl + "signin",
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
+                data: JSON.stringify({
                     mobile: mobile,
                     password: password
                 })
             }
             );
+
             if (res.status == 401) {
                 toast.error("Mobile number or password is incorrect");
             }
@@ -73,35 +79,34 @@ const SignInController = () => {
                 toast.success("SignIn Successfully");
                 localStorage.setItem('signIn', true);
                 localStorage.setItem('user', mobile)
-                localStorage.setItem('password', password)
                 history.push('/');
 
             }
 
-    }
-    else {
-    toast.error("Mobile number or password is in incorrect format");
+        }
+        else {
+            toast.error("Mobile number or password is in incorrect format");
 
-}
+        }
 
-       
+
     }
 
     const signUp = async (event) => {
         event.preventDefault();
-        let res = await fetch(apiUrl + "register", {
+
+        let res = await axios({
+            url: apiUrl + "register",
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: 
-                JSON.stringify({
-                    mobile: userDetail.mobile,
-                    password: userDetail.password,
-                    name: userDetail.name,
-                    email: userDetail.email
-                })
-            
+            data: JSON.stringify({
+                mobile: userDetail.mobile,
+                password: userDetail.password,
+                name: userDetail.name,
+                email: userDetail.email
+            })
         }
         );
 
@@ -116,7 +121,7 @@ const SignInController = () => {
         }
 
         else if (res.status == 200) {
-            toast.success("SignIn Successfully");
+            toast.success("SignUp Successfully");
             localStorage.setItem('signIn', true);
             localStorage.setItem('user', userDetail.mobile)
             history.push('/');
@@ -124,9 +129,18 @@ const SignInController = () => {
         }
 
     }
-    return (
-        <SignInPage toggleOverlay={toggleOverlay} signIn={signIn} signInDetail={signInDetail} setRegisterDetails={setRegisterDetails} setSignInDetails={setSignInDetails} signUp={signUp}/>
-        )
+    {
+
+        if (!localStorage.getItem('user'))
+        {    return (
+                <SignInPage toggleOverlay={toggleOverlay} signIn={signIn} signInDetail={signInDetail} setRegisterDetails={setRegisterDetails} setSignInDetails={setSignInDetails} signUp={signUp} />
+            )
+    }
+    else {
+            history.push("/");
+            return(<HomeController/>)
+}
+    }
 }
 
 export default SignInController;

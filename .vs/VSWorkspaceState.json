@@ -8,6 +8,6 @@
     "\\src\\controllers",
     "\\src\\routes"
   ],
-  "SelectedNode": "\\src\\assets\\css\\signin.css",
+  "SelectedNode": "\\src\\controllers\\SignInController.jsx",
   "PreviewInSolutionExplorer": false
 }
