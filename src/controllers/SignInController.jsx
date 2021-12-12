@@ -63,25 +63,28 @@ const SignInController = () => {
                     password: password
                 })
             }
-            );
+            ).then((res) => {
+                if (res.status == 200) {
+                    toast.success("SignIn Successfully");
+                    localStorage.setItem('signIn', true);
+                    localStorage.setItem('user', mobile)
+                    history.push('/');
 
-            if (res.status == 401) {
-                toast.error("Mobile number or password is incorrect");
-            }
-            else if (res.status == 402) {
-                toast.error("Password can not be null");
-            }
-            else if (res.status == 403) {
-                toast.error("Mobile Number should be of 10 digits");
-            }
+                }
+            }).catch((err) => {
 
-            else if (res.status == 200) {
-                toast.success("SignIn Successfully");
-                localStorage.setItem('signIn', true);
-                localStorage.setItem('user', mobile)
-                history.push('/');
+                if (err.response.status == 401) {
+                    toast.error("Mobile number or password is incorrect");
+                }
+                else if (err.response.status == 402) {
+                    toast.error("Password can not be null");
+                }
+                else if (err.response.status == 403) {
+                    toast.error("Mobile Number should be of 10 digits");
+                }
+            })
 
-            }
+
 
         }
         else {
@@ -108,26 +111,29 @@ const SignInController = () => {
                 email: userDetail.email
             })
         }
-        );
+        ).then((res) => {
 
-        if (res.status == 401) {
-            toast.error("User already exist");
-        }
-        else if (res.status == 402) {
-            toast.error("Mobile Number should be of 10 digit");
-        }
-        else if (res.status == 403) {
-            toast.error("All fields are madatory");
-        }
+           if (res.status == 200) {
+                toast.success("SignUp Successfully");
+                localStorage.setItem('signIn', true);
+                localStorage.setItem('user', userDetail.mobile)
+                history.push('/');
 
-        else if (res.status == 200) {
-            toast.success("SignUp Successfully");
-            localStorage.setItem('signIn', true);
-            localStorage.setItem('user', userDetail.mobile)
-            history.push('/');
+            }
+        }).catch((err) => {
+            if (err.response.status == 401) {
+                toast.error("User already exist");
+            }
+            else if (err.response.status == 402) {
+                toast.error("Mobile Number should be of 10 digit");
+            }
+            else if (err.response.status == 403) {
+                toast.error("All fields are madatory");
+            }
 
-        }
-
+           
+        })
+        return res;
     }
     {
 
